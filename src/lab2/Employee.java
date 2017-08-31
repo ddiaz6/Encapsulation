@@ -35,25 +35,31 @@ public class Employee {
         this.lastName = lastName;
         this.ssn = ssn;
     }
-
+    //Added to take out extra line of code on other methods
+    private void orientationDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        String fmtDate = sdf.format(orientationDate);        
+    } 
+    
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     public void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        
+      // SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+      // String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Hr on "
-            + fmtDate);
+            + orientationDate);
     }
 
-    // Assume this must be performed first, and assume that an employee
+    // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
     public void meetDepartmentStaff() {
         metDeptStaff = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+//        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+//        String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + fmtDate);
+            + orientationDate);
     }
 
     // Assume this must be performed third. And assume that because department
