@@ -36,41 +36,43 @@ public class Employee {
         this.ssn = ssn;
     }
     //Added to take out extra line of code on other methods
-    private void orientationDate(){
+    private String getFormattedDate(Date date){
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        return sdf.format(date);
     } 
+    
+    public void completeFirstDayObjectives(String cubeId){
+        setOrientationDate(new Date());
+        meetWithHrForBenefitAndSalaryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle(cubeId);
+    }
     
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
-        metWithHr = true;
-        
-      // SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-      // String fmtDate = sdf.format(orientationDate);        
+    public void meetWithHrForBenefitAndSalaryInfo() {
+        metWithHr = true;        
+            
         System.out.println(firstName + " " + lastName + " met with Hr on "
-            + orientationDate);
+            + getFormattedDate(orientationDate));
     }
 
     // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
     public void meetDepartmentStaff() {
-        metDeptStaff = true;
-//        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-//        String fmtDate = sdf.format(orientationDate);        
+        metDeptStaff = true;   
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + orientationDate);
+            +  getFormattedDate(orientationDate));
     }
 
     // Assume this must be performed third. And assume that because department
     // policies may change that this method may need to be called 
     // independently from other classes.
     public void reviewDeptPolicies() {
-        reviewedDeptPolicies = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        reviewedDeptPolicies = true;  
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + fmtDate);
+            +  getFormattedDate(orientationDate));
     }
 
     // Assume this must be performed 4th. And assume that because employees
@@ -78,11 +80,11 @@ public class Employee {
     // independently from other classes.
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
-        this.movedIn = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        this.movedIn = true;       
+//        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+//        String fmtDate = sdf.format(orientationDate);        
         System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + fmtDate);
+                + cubeId + " on " +  getFormattedDate(orientationDate));
     }
 
     public String getFirstName() {
@@ -92,7 +94,7 @@ public class Employee {
     // setter methods give the developer the power to control what data is
     // allowed through validation.
     
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {        
        this.firstName = firstName;
     }
 
